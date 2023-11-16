@@ -6,14 +6,16 @@
 char _getchar(void)
 {
 	char c;
-	ssize_t to read;
+	ssize_t to_read;
 
 	to_read = read(STDIN_FILENO, &c, 1);
 	if (to_read == 1)
 		return (c);
 	else
 		return (EOF);
+
 }
+
 /**
  * _getline - check the code
  * @line: double pointer
@@ -39,7 +41,7 @@ ssize_t _getline(char **line, size_t *len, FILE *stream)
 	buffer_size = *len;
 	while ((c = _getchar()) != EOF)
 	{
-		if (char_read + 1 >= buffer_size)
+		if (chars_read + 1 >= buffer_size)
 		{
 			buffer_size += 128;
 			new_buffer = realloc(buffer, buffer_size);

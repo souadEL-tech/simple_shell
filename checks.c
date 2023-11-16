@@ -10,7 +10,7 @@ void env_check(char **array)
 {
 	int j, l;
 
-	if (_strlen(array[0]) == _strlen("env") && _strcmp(attar[0], "env") == 0)
+	if (_strlen(array[0]) == _strlen("env") && _strcmp(array[0], "env") == 0)
 		for (j = 0; environ[j] != NULL; j++)
 		{
 			for (l = 0; environ[j][l] != '\0'; l++)
@@ -65,7 +65,6 @@ void exit_check(char **array, char *line, int exit_stat)
 		{
 			free_2D(array);
 			free(line);
-			exit(tmp);
 		}
 		free_2D(array);
 		free(line);
@@ -82,7 +81,7 @@ void exit_check(char **array, char *line, int exit_stat)
 
 int spaces_tabs_check(char *line)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	while (line[i] != '\0')

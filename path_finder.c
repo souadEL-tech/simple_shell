@@ -8,7 +8,7 @@
 
 void path_finder(char **array)
 {
-	char *path = getevn("PATH"), *str, *con, *token;
+	char *path = getenv("PATH"), *str, *con, *token;
 
 	str = malloc(sizeof(char) * (_strlen(path) + 1));
 	if (str == NULL)

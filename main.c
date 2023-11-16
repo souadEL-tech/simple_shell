@@ -54,7 +54,7 @@ int main(void)
 	while (1)
 	{
 		if (is_interactive)
-			_puthchar_cisfun();
+			_putchar_cisfun();
 		if (getline(&line, &len, stdin) == -1)
 		{
 			if (is_interactive)
@@ -66,7 +66,7 @@ int main(void)
 			free(line);
 			break;
 		}
-		if (line[0] == '\n' || spaces_tabs_check(line) == 0)
+		if (line[0] == '\n' || space_tabs_check(line) == 0)
 		{
 			free(line);
 			line = NULL;

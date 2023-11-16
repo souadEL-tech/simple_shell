@@ -18,7 +18,7 @@ int execute_line(char *con, char **array)
 	}
 	if (pid == 0)
 	{
-		execute(con, array, NULL);
+		execve(con, array, NULL);
 		perror(array[0]);
 		exit(errno);
 	}
