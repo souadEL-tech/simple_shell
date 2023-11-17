@@ -40,7 +40,7 @@ int write_history(info_t *info)
 		return (-1);
 
 	fd = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
-	free(filename)
+	free(filename);
 	if (fd == -1)
 		return (-1);
 	for (node = info->history; node; node = node->next)
@@ -101,4 +101,71 @@ int read_history(info_t *info)
 	renumber_history(info);
 	return (info->histcount);
 }
+
+/**
+ * build_history_list - function
+ * @info: para 1
+ * @buf: buffer
+ * @linecount: the hist lineacount
+ * Return: int val
+ */
+int build_history_list(info_t *info, char *buf, int linecount)
+{
+	list_t *node = NULL;
+
+	if (info->history)
+		node = info->history;
+	add_node_end(&node, buf, linecount);
+
+	if (!info->history)
+		info->history = node;
+	return (0);
+}
+
+/**
+ * renumber_history - function
+ * @info: para1
+ *
+ * Return: the new histcount
+ */
+
+int renumber_history(info_t *info)
+{
+	list_t *node = info->history;
+	int i = 0;
+
+	while (node)
+	{
+		node->num = i++;
+		node = node->next;
+	}
+	return (info->histcount = i);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
