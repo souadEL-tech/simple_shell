@@ -3,9 +3,9 @@
 /**
  * _myexit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
- * 		constant function prototype.
+ * constant function prototype.
  * Return:exits with a given exit status
- * 	(0) if info.argv[0] != "exit"
+ * (0) if info.argv[0] != "exit"
  */
 int _myexit(info_t *info)
 {
@@ -32,7 +32,7 @@ int _myexit(info_t *info)
 /**
  * _mycd - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
- * 		constant function prototype.
+ * constant function prototype.
  * Return: Always 0
  */
 int _mycd(info_t *info)
@@ -73,8 +73,8 @@ int _mycd(info_t *info)
 	}
 	else
 	{
-		_setenv(info, "OLDPWD" , _getenv(info, "PWD="));
-		_setenv(info, "PWD" , getcwd(buffer, 1024));
+		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
@@ -82,7 +82,7 @@ int _mycd(info_t *info)
 /**
  * myhelp - changes the current directory of the process
  * @info: Structure containing potential arguments.Used to maintain
- * 		constant function prototype.
+ * constant function prototype.
  * Return: Always 0
  */
 int _myhelp(info_t *info)
