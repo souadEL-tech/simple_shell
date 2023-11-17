@@ -17,7 +17,7 @@ int hsh(info_t *info, char **av)
 		clear_info(info);
 		if (interactive(info))
 			_puts("$ ");
-		_eputchar(BUF_FLISH);
+		_eputchar(BUF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
 		{
@@ -60,7 +60,7 @@ int find_builtin(info_t *info)
 		{"env", _myenv},
 		{"help", _myhelp},
 		{"history", _myhistory},
-		{"setenv", _mystenv},
+		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", _mycd},
 		{"alias", _myalias},
@@ -68,7 +68,7 @@ int find_builtin(info_t *info)
 	};
 
 	for (i = 0; builtintbl[i].type; i++)
-		if (_strcmp(info->argv[0], builtintdl[i].type) == 0)
+		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
 			built_in_ret = builtintbl[i].func(info);
@@ -97,7 +97,7 @@ void find_cmd(info_t *info)
 	for (i = 0, k = 0; info->arg[i]; i++)
 		if (!is_delim(info->arg[i], " \t\n"))
 			k++;
-	if (1k)
+	if (!k)
 		return;
 
 	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
@@ -109,7 +109,7 @@ void find_cmd(info_t *info)
 	else
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
-			|| info->argv[0][0] == '/') && is_cmd(inf0, info->argv[0]))
+			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
@@ -140,7 +140,7 @@ void fork_cmd(info_t *info)
 	{
 		if (execve(info->path, info->argv, get_environ(info)) == -1)
 		{
-			free_info(infi, 1);
+			free_info(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
