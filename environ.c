@@ -58,7 +58,7 @@ int _mysetenv(info_t *info)
 
 
 /**
- * myunsetenv - function
+ * _myunsetenv - function
  * @info: parameter
  *
  * Return: int val
@@ -85,7 +85,7 @@ int _myunsetenv(info_t *info)
 
 /**
  * populate_env_list - finction
- * @info : parameter
+ * @info: parameter
  *
  * Return: int val
  */
